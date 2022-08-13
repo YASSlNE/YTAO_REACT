@@ -1,13 +1,15 @@
-import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import Home from './components/Home';
-
+import UrlBox from './components/UrlBox';
 function App() {
   return (
-    <>
-      <Home />
-    </>
+    <div className='bg-turquoise h-screen w-screen'>
+      {/* <Home /> */}
+      
+      <div className="flex justify-center">
+        <UrlBox />
+      </div>
+    </div>
   );
 }
 

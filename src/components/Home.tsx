@@ -3,11 +3,6 @@ import axios from 'axios'
 function Home( ) {
   const [Yurl, SetYurl] = useState();
   const [Aurl, SetAurl] = useState();
-  // componentDidMount axios() {
-  //   await axios.get(`https://jsonplaceholder.typicode.com/users`)
-  //     .then(res => {
-  //       const persons = res.data;
-  //       this.setState({ persons });
   const getUrl = async() =>{
     // SetYurl()
     await axios.get(`https://ytaoapp.herokuapp.com/api?url=${Yurl}`)
@@ -26,6 +21,7 @@ function Home( ) {
     </audio>
     <input type="text" value={Yurl} onChange={onChange} placeholder='Put the youtube link here' />
     <button onClick={getUrl}>Get audio</button>
+    
     </>
   )
 }
