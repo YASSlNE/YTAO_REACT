@@ -1,16 +1,24 @@
 import {useState} from 'react'
-import axios from 'axios'
+// import axios from 'axios'
+
+import ydl from 'youtube-dl-exec'
+ 
+
 function Home( ) {
-  const [Yurl, SetYurl] = useState();
+  const [Yurl, SetYurl] = useState("https://www.youtube.com/watch?v=ERAj90DYzzE");
   const [Aurl, SetAurl] = useState();
   const getUrl = async() =>{
     // SetYurl()
-    await axios.get(`https://ytaoapp.herokuapp.com/api?url=${Yurl}`)
-      .then(res => {
-        SetAurl(res['data']['url']); 
-      }
-      )
-  }
+    ydl(Yurl,{'format': 'bestaudio',
+             skipDownload: true,
+             dumpSingleJson: true,}).then(output=>{
+              // const formats: any=output['formats']
+              // const audio_source=formats[6]['resolution'].includes('audio only')?formats[6]['url']:false
+              // console.log(audio_source)
+              console.log("qsdmlfkjqsmldfkj")
+             }
+             )
+           }
   const onChange = (e : any)=>{
     SetYurl(e.target.value)
   }
