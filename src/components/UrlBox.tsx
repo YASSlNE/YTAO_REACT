@@ -1,18 +1,37 @@
-import {useState} from 'react'
+import {useState, useContext} from 'react'
+
+import AudioContext from '../context/AudioContext';
+import Button from './Button'
+
 function UrlBox() {
 
-  const [url,setUrl] = useState("")
+  
+  const {url, addUrl} = useContext(AudioContext)
+
+  const [urlChange, setUrlChange] = useState("")
+
+
   const handleUrl=(e : any)=>{
-    setUrl(e.target.value)
+    setUrlChange(e.target.value)
+  }
+
+  const handleSubmit=(e : any)=>{
+    e.preventDefault();
+    // console.log(urlChange)
+    addUrl?.("url")
   }
 
   return (
     <>
-      <input className="flex justify-center bg-butter w-2/5 h-12 
+    <form onSubmit={handleSubmit} className="flex items-center flex-col">
+      <input className="flex bg-butter w-[500px] h-12 
       break-all mt-20 pl-2 font-mono rounded-md text-md
-       " onChange={handleUrl} type="text" value={url} placeholder='Insert a youtube url' />
+       " onChange={handleUrl} type="text" value={urlChange} placeholder='Insert a youtube url' />
+    
+      <Button/>
+    </form>
     </>
   )
 }
   
-export default UrlBox 
+export default UrlBox  

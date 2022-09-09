@@ -9,17 +9,11 @@ function App() {
     <div className='bg-turquoise h-screen w-screen'>
       {/* <Home /> */}
       
+      <UrlBox />
       <div className="flex justify-center">
-        <UrlBox />
+      <Playlist />
       </div>
-      <div className="flex justify-center">
-        <Button />
-      </div>
-      <div className="flex justify-center">
-        <Playlist />
 
-      </div>
-      
     </div>
   );
 }

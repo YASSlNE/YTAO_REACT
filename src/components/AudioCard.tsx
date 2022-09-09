@@ -1,15 +1,22 @@
-import {useState} from 'react'
+import {useState, useContext} from 'react'
 import axios from 'axios'
+import AudioContext from '../context/AudioContext';
 
 function AudioCard(){
 
-  const [url,setUrl] = useState("https://www.youtube.com/watch?v=ALahNOwrTvg")
 
-  const handleClick=async()=>{
-    await axios.get(`http://localhost:3001/?v=${url}`)
-    .then((res:any) =>{
-      console.log(res['data']);
-    })
+  const {url, addUrl} = useContext(AudioContext)
+
+
+  // const handleClick=async()=>{
+  //   await axios.get(`http://localhost:3001/?v=${url}`)
+  //   .then((res:any) =>{
+  //     setUrl(res['data'])
+  //     console.log(res['data']);
+  //   })
+  // }
+  const handleClick=()=>{
+    console.log(url)
   }
 
 
@@ -22,4 +29,4 @@ function AudioCard(){
   )
 }
   
-export default AudioCard
+export default AudioCard 

@@ -44,12 +44,6 @@ const fun=async (res, yturl)=>{
 
 
 
-
-
-
-
-
-
 	await res.send(audio_source)
 }
 app.get('/', (req, res) => {
@@ -63,14 +57,3 @@ app.listen(3001, () => {
 });
 
 
-
-// const ziw="https://www.youtube.com/watch?v=ERAj90DYzzE";
-// var audio_source
-// const kiw=youtubedl(ziw,{'format': 'bestaudio',
-// 						 skipDownload: true,
-// 						 dumpSingleJson: true,}).then(output=>{
-// 						 	formats=output['formats']
-// 						 	audio_source=formats[6]['resolution'].includes('audio only')?formats[6]['url']:false
-// 						 	console.log(audio_source)
-// 						 }
-// 						 )
