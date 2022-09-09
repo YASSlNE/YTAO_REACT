@@ -1,12 +1,12 @@
 import {useState, useContext} from 'react'
 import axios from 'axios'
-import AudioContextInterface from '../context/AudioContext';
-import {AudioContext} from '../context/AudioContext';
+// import AudioContextInterface from '../context/AudioContext';
+import AudioContext from '../context/AudioContext';
 
 function AudioCard(){
 
 
-  const {url, addUrl} = useContext(AudioContext)
+  const {addUrl} = useContext(AudioContext)
 
 
   // const handleClick=async()=>{
@@ -17,7 +17,7 @@ function AudioCard(){
   //   })
   // }
   const handleClick=()=>{
-    console.log(url)
+    console.log("url")
   }
 
 

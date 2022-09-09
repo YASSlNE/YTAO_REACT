@@ -4,10 +4,13 @@ import UrlBox from './components/UrlBox';
 
 import Button from './components/Button';
 import Playlist from './components/Playlist';
+
+import {AudioProvider} from './context/AudioContext'
 function App() {
   return (
+    <AudioProvider>
     <div className='bg-turquoise h-screen w-screen'>
-      {/* <Home /> */}
+      
       
       <UrlBox />
       <div className="flex justify-center">
@@ -15,6 +18,7 @@ function App() {
       </div>
 
     </div>
+    </AudioProvider>
   );
 }
 

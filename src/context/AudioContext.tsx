@@ -12,16 +12,21 @@ interface AudioContextInterface {
 
 
 
-export const AudioContext= createContext<AudioContextInterface | any>({url: "mlsqdkjf", addUrl:(url : any)=>console.log(url)});
+// const AudioContext= createContext<AudioContextInterface | any>({url: "mlsqdkjf", addUrl:(url : any)=>console.log(url)});
 
-const AudioProvider= ()=>{
+
+const AudioContext= createContext<AudioContextInterface | any>({url: "", addUrl:(url : any)=>undefined});
+
+
+
+export const AudioProvider= ({children} : any)=>{
     
-    const [url,setUrl] = useState<AudioContextInterface | any>()
+    const [url,setUrl] = useState<AudioContextInterface | any>("default url value")
 
 
     const addUrl=(link : any)=>{
-        // setUrl(link)
-        console.log("link")
+        setUrl(link)
+        // console.log("link")
         // console.log(url)
     }
 
@@ -30,8 +35,11 @@ const AudioProvider= ()=>{
         url,
         addUrl,
     }}>
+    {
+        children
+    }
 
 
     </AudioContext.Provider>)
 }
-export default AudioProvider
+export default AudioContext

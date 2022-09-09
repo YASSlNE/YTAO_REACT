@@ -1,12 +1,12 @@
 import {useState, useContext} from 'react'
 
-import {AudioContext} from '../context/AudioContext';
+import AudioContext from '../context/AudioContext';
 import Button from './Button'
 
 function UrlBox() {
 
   
-  const {url, addUrl} = useContext(AudioContext)
+  const {addUrl} = useContext(AudioContext)
 
   const [urlChange, setUrlChange] = useState("")
 
@@ -18,7 +18,7 @@ function UrlBox() {
   const handleSubmit=(e : any)=>{
     e.preventDefault();
     // console.log(urlChange)
-    addUrl?.("ussssssssssrl")
+    addUrl(e.target.value)
   }
 
   return (
