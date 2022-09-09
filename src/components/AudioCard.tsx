@@ -1,6 +1,7 @@
 import {useState, useContext} from 'react'
 import axios from 'axios'
-import AudioContext from '../context/AudioContext';
+import AudioContextInterface from '../context/AudioContext';
+import {AudioContext} from '../context/AudioContext';
 
 function AudioCard(){
 

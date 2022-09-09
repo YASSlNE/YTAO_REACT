@@ -2,21 +2,21 @@ import {createContext, useState, Dispatch} from 'react'
 
 
 
-// interface AudioContextInterface {
-//   url: string | null;
-//   addUrl: (arg0: any)=> void | null
-//   // addUrl : Dispatch<React.SetStateAction<string | null>>
+interface AudioContextInterface {
+  url: string | null;
+  addUrl: (arg0: any)=> void | null
+  // addUrl : Dispatch<React.SetStateAction<string | null>>
 
-// }
-
-
+}
 
 
-export const AudioContext= createContext({});
 
-function AudioProvider(){
+
+export const AudioContext= createContext<AudioContextInterface | any>({url: "mlsqdkjf", addUrl:(url : any)=>console.log(url)});
+
+const AudioProvider= ()=>{
     
-    const [url,setUrl] = useState<string | null>(null)
+    const [url,setUrl] = useState<AudioContextInterface | any>()
 
 
     const addUrl=(link : any)=>{
@@ -31,6 +31,7 @@ function AudioProvider(){
         addUrl,
     }}>
 
+
     </AudioContext.Provider>)
 }
-export default AudioProvider 
+export default AudioProvider
