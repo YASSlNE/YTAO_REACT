@@ -3,33 +3,24 @@ import {createContext, useState, Dispatch} from 'react'
 import axios from 'axios'
 
 
-interface AudioContextInterface {
-  audios: {
-    link : string,
-    title : string,
-  }[] | null;
-  addAudio: (arg0: any)=> void | null
-  // addUrl : Dispatch<React.SetStateAction<string | null>>
-
-}
 
 
 
 
-// const AudioContext= createContext<AudioContextInterface | any>({url: "mlsqdkjf", addUrl:(url : any)=>console.log(url)});
 
 
-const AudioContext= createContext<AudioContextInterface | any>({audios: [{}], addAudio:(url : any)=>undefined});
+
+const AudioContext= createContext<any>();
 
 
 
 export const AudioProvider= ({children} : any)=>{
     
 
-    const [isLoading, setIsLoading] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
 
 
-    const [audios,setAudios] = useState<AudioContextInterface | any>([{
+    const [audios,setAudios] = useState<any>([{
     link:"youtube link grbw",
     title:"Title is good",
 }])
@@ -59,18 +50,6 @@ export const AudioProvider= ({children} : any)=>{
     }
 
 
-
-    // await axios.get(`http://localhost:3001/?v=${urlFetched}`)
-    // .then((res:any) =>{
-    //   const doc={
-    //     link: res['data']['url'],
-    //     title: res['data']['title'],
-    //   }
-    //   console.log("normalement hedhi awel msg yo5roj")
-    //   console.log(doc)
-    //   return doc
-    // })
-  // }
 
 
 

@@ -1,10 +1,15 @@
 
-import spinner from './spinner2.gif'
+import spinner from './spinner.gif'
 
 function Spinner(){
 	return <img
 			src={spinner}
 			alt='Loading ...'
+			style={{
+			width:"40px",
+			height:"40px",
+			}}
+			
 			/>
 }
 export default Spinner

@@ -2,12 +2,12 @@ import {useContext} from 'react'
 import AudioContext from '../context/AudioContext'
 import AudioCard from './AudioCard'
 
-import Spinner from './Spinner'
 
 function Playlist() {
 
 
 
+    const {isLoading} = useContext(AudioContext)
 
 
   return (
@@ -19,7 +19,7 @@ function Playlist() {
         </audio>
         </div>
         <div className="overflow-y-scroll mt-2 gap-3 flex items-center flex-col flex-nowrap">
-            <AudioCard />
+            <AudioCard isLoading={isLoading}/>
             <AudioCard />
             <AudioCard />
             <AudioCard />
