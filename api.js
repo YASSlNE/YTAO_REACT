@@ -9,9 +9,9 @@ const morgan = require('morgan');
 // defining the Express app
 const app = express();
 // defining an array to work as the database (temporary solution)
-const ads = [
-  {title: 'Hello, world (again)!'}
-];
+// const ads = [
+//   {title: 'Hello, world (again)!'}
+// ];
 
 // adding Helmet to enhance your Rest API's security
 app.use(helmet());
@@ -30,21 +30,28 @@ app.use(morgan('combined'));
 
 
 const fun=async (res, yturl)=>{
-	const get_only_url=yturl.replace("/?v=","")
+	const get_only_url=yturl.replace("/?v=","") // gets the youtube link
 
-	let audio_source
+	let audio_source={url:"", title:""}
 
 	await youtubedl(get_only_url,{'format': 'bestaudio',
 						 skipDownload: true,
 						 dumpSingleJson: true,}).then(output=>{
+						 	// console.log(output)
+						 	// text=res.send(output)
 						 	formats=output['formats']
-						 	audio_source=formats[6]['resolution'].includes('audio only')?formats[6]['url']:false
+						 	audio_source["url"]=formats[6]['resolution'].includes('audio only')?formats[6]['url']:false
+						 	audio_source["title"]=output["title"]
 						 }
 						 )
 
 
 
 	await res.send(audio_source)
+
+
+
+
 }
 app.get('/', (req, res) => {
   // res.send(ads);

@@ -6,7 +6,7 @@ import Button from './Button'
 function UrlBox() {
 
   
-  const {addUrl} = useContext(AudioContext)
+  const {audios, addAudio, getDetailsFromTheApi} = useContext(AudioContext)
 
   const [urlChange, setUrlChange] = useState("")
 
@@ -15,10 +15,13 @@ function UrlBox() {
     setUrlChange(e.target.value)
   }
 
-  const handleSubmit=(e : any)=>{
+  const handleSubmit=async (e : any)=>{
     e.preventDefault();
-    // console.log(urlChange)
-    addUrl(e.target.value)
+
+    const doc=await getDetailsFromTheApi(urlChange)
+    addAudio(doc)
+    console.log(audios)
+
   }
 
   return (

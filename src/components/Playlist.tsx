@@ -1,8 +1,15 @@
-
-
+import {useContext} from 'react'
+import AudioContext from '../context/AudioContext'
 import AudioCard from './AudioCard'
 
+import Spinner from './Spinner'
+
 function Playlist() {
+
+
+
+
+
   return (
     <>
     <div className="bg-butter w-[744px] h-[360px] mt-5 flex flex-col justify-center rounded-md">
