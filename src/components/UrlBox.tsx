@@ -25,6 +25,7 @@ function UrlBox() {
     addAudio({isLoading:true, id:newId})
     const doc=await getDetailsFromTheApi(urlChange)
     doc.id=newId
+    
     addAudio(doc)
     console.log(audios)
 

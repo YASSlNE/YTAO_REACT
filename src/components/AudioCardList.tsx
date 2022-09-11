@@ -15,7 +15,7 @@ function AudioCardList(){
 		<>
 		{
 			audios.map((item)=>(
-				<AudioCard title={item.title} link={item.link} isLoading={item.isLoading} id={item.id} />
+				<AudioCard isPlaying={item.isPlaying} title={item.title} link={item.link} isLoading={item.isLoading} id={item.id} />
 				)
 			)
 		}

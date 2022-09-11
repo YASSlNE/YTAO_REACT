@@ -5,19 +5,33 @@ import AudioContext from '../context/AudioContext';
 
 import Spinner from './Spinner'
 
-import {FaTimes, FaEdit} from 'react-icons/fa'
+import {MdDelete} from 'react-icons/md'
 
 
 
-function AudioCard({isLoading, title, link, id}){
+function AudioCard({isLoading, title, link, id, isPlaying}){
+
+ 
 
 
-  const {addUrl, setCurrentAudioSrc, deleteAudio} = useContext(AudioContext)
+  const {addUrl, setCurrentAudioSrc, deleteAudio, audios} = useContext(AudioContext)
 
   const handleClick=()=>{
     setCurrentAudioSrc(link)
-    console.log(link)
+    
+    audios.map((item)=>{
+      if(item.id!=id)
+        item.isPlaying=false
+      else
+        item.isPlaying=true
+    })
   }
+
+
+
+
+
+  const isPlayingClass=isPlaying ? 'bg-[#248278]': 'bg-turquoise'
 
 
   return isLoading?
@@ -29,16 +43,17 @@ function AudioCard({isLoading, title, link, id}){
     </div>
   )
   :(
-    <div className="flex justify-center bg-turquoise h-10 w-1/2 rounded-md ">
-      
+    <div className={`flex justify-center bg-turquoise hover:bg-[#31b0a3] h-10 w-1/2 rounded-md ${isPlayingClass}`}>
+      <button className="h-10 w-full" onClick={handleClick}>
 
         <button onClick={()=>deleteAudio(id)}>
-            <FaTimes color="red"> </FaTimes>
+            <MdDelete color="red"> </MdDelete>
         </button>
-      <button onClick={handleClick}>
+        
           
 
         {title}
+
       </button>
     </div>
   )
@@ -47,6 +62,7 @@ function AudioCard({isLoading, title, link, id}){
 
 AudioCard.defaultProps={
   isLoading: false,
+  isPlaying: false,
 }
 
 

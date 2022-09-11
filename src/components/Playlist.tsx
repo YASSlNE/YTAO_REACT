@@ -3,20 +3,21 @@ import AudioContext from '../context/AudioContext'
 import AudioCard from './AudioCard'
 import AudioCardList from './AudioCardList'
 
+
+import ReactAudioPlayer from 'react-audio-player';
+
 function Playlist() {
 
 
 
-    const {isLoading, currentAudioSrc} = useContext(AudioContext)
+    const {isLoading, currentAudioSrc, setNextAudio, onEndedHandler} = useContext(AudioContext)
 
 
   return (
     <>
-    <div className="bg-butter w-[744px] h-[360px] mt-5 flex flex-col justify-center rounded-md">
-        <div className="flex justify-center mb-a mt-a">
-        <audio src={currentAudioSrc} controls preload="auto">
-            <source type="audio/mpeg" src={currentAudioSrc} />
-        </audio>
+    <div className="bg-butter w-[744px] h-[360px] mt-5 flex flex-col justify-around rounded-md">
+        <div className="flex justify-center ">
+        <ReactAudioPlayer src={currentAudioSrc} onEnded={onEndedHandler} autoPlay  controls/>
         </div>
         <div className="overflow-y-scroll mt-2 gap-3 flex items-center flex-col flex-nowrap">
             <AudioCardList />
