@@ -5,16 +5,18 @@ import AudioContext from '../context/AudioContext';
 
 import Spinner from './Spinner'
 
+import {FaTimes, FaEdit} from 'react-icons/fa'
 
 
-function AudioCard({isLoading, title, link}){
+
+function AudioCard({isLoading, title, link, id}){
 
 
-  const {addUrl} = useContext(AudioContext)
-
+  const {addUrl, setCurrentAudioSrc, deleteAudio} = useContext(AudioContext)
 
   const handleClick=()=>{
-    console.log("url")
+    setCurrentAudioSrc(link)
+    console.log(link)
   }
 
 
@@ -28,11 +30,25 @@ function AudioCard({isLoading, title, link}){
   )
   :(
     <div className="flex justify-center bg-turquoise h-10 w-1/2 rounded-md ">
+      
+
+        <button onClick={()=>deleteAudio(id)}>
+            <FaTimes color="red"> </FaTimes>
+        </button>
       <button onClick={handleClick}>
-        How to not quit
+          
+
+        {title}
       </button>
     </div>
   )
 }
   
+
+AudioCard.defaultProps={
+  isLoading: false,
+}
+
+
+
 export default AudioCard 

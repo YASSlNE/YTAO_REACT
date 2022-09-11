@@ -3,6 +3,9 @@ import {useState, useContext} from 'react'
 import AudioContext from '../context/AudioContext';
 import Button from './Button'
 
+
+import {v4 as uuidv4} from 'uuid'
+
 function UrlBox() {
 
   
@@ -18,7 +21,10 @@ function UrlBox() {
   const handleSubmit=async (e : any)=>{
     e.preventDefault();
 
+    const newId=uuidv4()
+    addAudio({isLoading:true, id:newId})
     const doc=await getDetailsFromTheApi(urlChange)
+    doc.id=newId
     addAudio(doc)
     console.log(audios)
 
