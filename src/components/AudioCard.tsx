@@ -7,6 +7,8 @@ import Spinner from './Spinner'
 
 import {MdDelete} from 'react-icons/md'
 
+import {motion, AnimatePresence} from 'framer-motion'
+
 
 
 function AudioCard({isLoading, title, link, id, isPlaying}){
@@ -34,17 +36,51 @@ function AudioCard({isLoading, title, link, id, isPlaying}){
   const isPlayingClass=isPlaying ? 'bg-[#248278]': 'bg-turquoise'
 
 
-  return isLoading?
+  const dropIn={
+    
+    visible:{
+      y:'2vh',
+      opacity:1,
+    },
+    initial:{ 
+      scale: 0.8,
+      opacity: 0
+    },
+    animate:{
+    scale: 1,
+    opacity: 1
+    },
+    exit:{
+    scale: 0.8,
+    opacity: 0
+    },
+    transition:{
+    type: "spring"
+    },
+  };
+
+
+  const dropOut={
+    exit:{
+      y:'0',
+      opacity:0,
+    }
+  }
+
+
+  return <AnimatePresence>
+  <motion.div key={id} variants={dropIn}  className="flex justify-center bg-turquoise h-10 w-1/2 rounded-md ">
+   {isLoading?
   (
-    <div className="flex justify-center bg-turquoise h-10 w-1/2 rounded-md ">
+    
+    
       
         <Spinner />
       
-    </div>
+    
   )
   :(
-    <div className={`flex justify-center bg-turquoise hover:bg-[#31b0a3] h-10 w-1/2 rounded-md ${isPlayingClass}`}>
-      <button className="h-10 w-full" onClick={handleClick}>
+    <button className="h-10 w-full" onClick={handleClick}>
 
         <button onClick={()=>deleteAudio(id)}>
             <MdDelete color="red"> </MdDelete>
@@ -55,8 +91,12 @@ function AudioCard({isLoading, title, link, id, isPlaying}){
         {title}
 
       </button>
-    </div>
+    
   )
+}
+</motion.div>
+</AnimatePresence>
+
 }
   
 

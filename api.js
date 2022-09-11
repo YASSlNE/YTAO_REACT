@@ -30,10 +30,11 @@ app.use(morgan('combined'));
 
 
 const fun=async (res, yturl)=>{
+	
+
+	if(yturl.includes("/?v=")){
 	const get_only_url=yturl.replace("/?v=","") // gets the youtube link
-
 	let audio_source={url:"", title:""}
-
 	await youtubedl(get_only_url,{'format': 'bestaudio',
 						 skipDownload: true,
 						 dumpSingleJson: true,}).then(output=>{
@@ -48,7 +49,10 @@ const fun=async (res, yturl)=>{
 
 
 	await res.send(audio_source)
-
+	}
+	else if(yturl.includes("/?p=")){
+		res.send(yturl)
+	}
 
 
 
@@ -56,6 +60,7 @@ const fun=async (res, yturl)=>{
 app.get('/', (req, res) => {
   // res.send(ads);
   fun(res, req['url'])
+
 });
 
 // starting the server

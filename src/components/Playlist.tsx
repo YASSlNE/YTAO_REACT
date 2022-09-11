@@ -17,9 +17,9 @@ function Playlist() {
     <>
     <div className="bg-butter w-[744px] h-[360px] mt-5 flex flex-col justify-around rounded-md">
         <div className="flex justify-center ">
-        <ReactAudioPlayer src={currentAudioSrc} onEnded={onEndedHandler} autoPlay  controls/>
+        <ReactAudioPlayer src={currentAudioSrc} onEnded={onEndedHandler} autoplay controls/>
         </div>
-        <div className="overflow-y-scroll mt-2 gap-3 flex items-center flex-col flex-nowrap">
+        <div className="h-[200px] overflow-y-scroll mt-2 gap-3 flex items-center flex-col flex-nowrap">
             <AudioCardList />
         </div>
     </div>
