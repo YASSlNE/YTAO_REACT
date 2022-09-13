@@ -20,8 +20,8 @@ function UrlBox() {
 
   const handleSubmit=async (e : any)=>{
     e.preventDefault();
-    if(!urlChange.includes("www.youtube.com/watch?v=")){
-      console.log("a7a")
+    if(!urlChange.includes("www.youtube.com/watch?v=") && !urlChange.includes("youtu.be/")){
+      alert("Link is not valid")
     }
     else{
 
